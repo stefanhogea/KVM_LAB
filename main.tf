@@ -31,8 +31,11 @@ resource "libvirt_volume" "ubuntu-qcow2" {
   pool = "default" # List storage pools using virsh pool-list
   #source = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.4.0-amd64-netinst.iso"
   #source = "./debian-11.4.0-amd64-netinst.iso"
-  source = "bionic-minimal-cloudimg-amd64.img"
+  source = "bionic-minimal-cloudimg-amd64_20GB.img" 
+  #to see info about the base iamge you are using before running terraform: sudo qemu-img info /var/lib/libvirt/images/bionic-minimal-cloudimg-amd64_20GB.img
+  #to increase virtual disk size: sudo qemu-img resize /var/lib/libvirt/images/bionic-minimal-cloudimg-amd64_20GB.img +20G
   format = "qcow2"
+  #size = "2000000000"
 }
 
 # resource "libvirt_network" "test_network" {
